@@ -1,0 +1,29 @@
+{
+  "name": "paynl/payum-gateway",
+  "type": "library",
+  "description": "The Pay.nl Payum extension.",
+  "keywords": [
+    "payment",
+    "payum",
+    "paynl"
+  ],
+  "license": "MIT",
+  "require": {
+    "payum/core": "^1.5",
+    "paynl/sdk": "^1.5"
+  },
+  "require-dev": {
+    "payum/core": "^1.5@dev",
+    "php-http/guzzle6-adapter": "^1.1"
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {
+    "psr-4": {
+      "PaynlPayum\\": [
+        "./"
+      ]
+    }
+  }
+}
