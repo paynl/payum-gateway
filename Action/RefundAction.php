@@ -49,7 +49,10 @@ class RefundAction implements ActionInterface, GatewayAwareInterface, ApiAwareIn
                 $amount = !empty($model[PaynlApi::FIELD_ORDER_AMOUNT]) ? $model[PaynlApi::FIELD_ORDER_AMOUNT] : null;
                 $description = !empty($model[PaynlApi::FIELD_ORDER_DESCRIPTION]) ? $model[PaynlApi::FIELD_ORDER_DESCRIPTION] : null;
                 $processDate = !empty($model[PaynlApi::FIELD_ORDER_PROCESSING_DATE]) ? $model[PaynlApi::FIELD_ORDER_PROCESSING_DATE] : null;
-                $result = $this->api->refundTransaction($model[PaynlApi::FIELD_ORDER_ID], $amount, $description, $processDate);
+                $currency = $model[PaynlApi::FIELD_CURRENCY];
+
+                $result = $this->api->refundTransaction($model[PaynlApi::FIELD_ORDER_ID], $amount, $description, $processDate, $currency);
+
                 if (!($result instanceof RefundResult)) {
                     throw new \LogicException("Could not refund transaction. Unexpected result has been received.");
                 }
