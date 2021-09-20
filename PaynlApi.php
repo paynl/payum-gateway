@@ -19,6 +19,7 @@ class PaynlApi
     const FIELD_ORDER_AMOUNT = 'amount';
     const FIELD_ORDER_DESCRIPTION = 'description';
     const FIELD_ORDER_PROCESSING_DATE = 'processingDate';
+    const FIELD_CURRENCY = 'currency';
 
     /** @var string */
     private $tokenCode;
@@ -125,11 +126,11 @@ class PaynlApi
         return Transaction::capture($transactionId);
     }
 
-    public function refundTransaction($transactionId, $amount = null, $description = null, \DateTime $processDate = null)
+    public function refundTransaction($transactionId, $amount = null, $description = null, \DateTime $processDate = null, $currency = null)
     {
         self::prepareSdk();
 
-        return Transaction::refund($transactionId, $amount, $description, $processDate);
+        return Transaction::refund($transactionId, $amount, $description, $processDate, null, $currency);
     }
 
     public function voidTransaction($transactionId)
